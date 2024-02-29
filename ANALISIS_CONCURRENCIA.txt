@@ -1,0 +1,9 @@
+i.¿Qué condiciones de carrera se podrían presentar?
+Cuando necesitamos consultar o agregar nuevos planos, podemos experimentar un escenario donde accedemos al HashMap donde se almacenan los planos.
+
+ii. ¿Cuáles son las respectivas regiones críticas?
+Dado que el almacenamiento persistente de los planos no es seguro para hilos (thread-safe), surge una condición de carrera cuando dos solicitudes intentan agregar un plano con el mismo nombre y autor al mismo tiempo.
+
+Solucion: Para asegurar el funcionamiento thread-safe, vamos a cambiar el tipo de HashMap a ConcurrentHashMap, ya que esta clase garantiza un funcionamiento thread-safe. En cuanto a la condición de carrera, vamos a sustituir el método put() por el método putIfAbsent(), que previene la condición de carrera.
+
+
